@@ -14,3 +14,24 @@ fetch('https://www.course-api.com/javascript-store-products')
     .catch(error => {
         console.error('There was a problem with the fetch operation:', error);
     });
+
+//Task 3
+// Function to display Product Details Dynamically
+function displayProducts(products) {
+    const container = document.getElementById('container');
+    products.forEach(product => {
+        const productElement = document.createElement('section');
+        productElement.classList.add('product');
+
+        const formattedPrice = product.price.toFixed(2);
+        const imageUrl = product.image; 
+
+        productElement.innerHTML = `
+        <img src="${imageUrl}" alt="${product.name}">
+        <h3>${product.name}</h3>
+        <p>Company: ${product.company}</p>
+        <p>Price: $${formattedPrice}</p>`;
+
+        container.appendChild(productElement);
+    });
+}
