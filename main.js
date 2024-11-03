@@ -1,5 +1,7 @@
 //Task 2
 //Fetch Products from the API Using Fetch and Promises
+const container = document.getElementById('container');
+
 fetch('https://www.course-api.com/javascript-store-products')
     .then(response => {
         if (!response.ok) {
@@ -8,17 +10,16 @@ fetch('https://www.course-api.com/javascript-store-products')
         return response.json();
     })
     .then(data => {
-        // Call the function to display products
         displayProducts(data);
     })
     .catch(error => {
         console.error('There was a problem with the fetch operation:', error);
+        displayError('Failed to load products. Please try again later.');
     });
 
 //Task 3
 //Function to display Product Details Dynamically
 function displayProducts(products) {
-    const container = document.getElementById('container');
     products.forEach(product => {
         const productElement = document.createElement('section');
         productElement.classList.add('product');
@@ -39,7 +40,6 @@ function displayProducts(products) {
 //Task 4
 //Handle Errors Gracefully
 function displayError(message) {
-    const container = document.getElementById('container');
     const errorElement = document.createElement('section');
     errorElement.classList.add('error-message');
     errorElement.textContent = message;
