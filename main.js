@@ -16,7 +16,7 @@ fetch('https://www.course-api.com/javascript-store-products')
     });
 
 //Task 3
-// Function to display Product Details Dynamically
+//Function to display Product Details Dynamically
 function displayProducts(products) {
     const container = document.getElementById('container');
     products.forEach(product => {
@@ -34,4 +34,14 @@ function displayProducts(products) {
 
         container.appendChild(productElement);
     });
+}
+
+//Task 4
+//Handle Errors Gracefully
+function displayError(message) {
+    const container = document.getElementById('container');
+    const errorElement = document.createElement('section');
+    errorElement.classList.add('error-message');
+    errorElement.textContent = message;
+    container.appendChild(errorElement);
 }
